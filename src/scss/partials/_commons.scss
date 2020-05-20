@@ -1,0 +1,66 @@
+/*****************
+* Commons
+******************/
+
+// General Styles
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: $general_font;
+}
+
+.general_container {
+    width: 1170px;
+    margin: 0 auto;
+}
+
+/**********
+* Mixin
+***********/
+// flex
+@mixin flex($align:flex-start, $just-content:flex-start, $flex-direction:row) {
+    display: flex;
+    align-items: $align;
+    justify-content: $just-content;
+    flex-direction: $flex-direction;
+}
+
+// list style
+@mixin list_style {
+    margin: 0;
+    padding: 0;
+    list-style: none;  
+}
+
+// link style
+@mixin style_link {
+    text-decoration: none;
+}
+
+// fonts
+@mixin font_style ($size: false, $color: false, $weight: false, $lh: false, $ls: false) {
+	// font-size
+	@if $size {
+		font-size: $size;
+	}
+	// color
+	@if $color {
+		color: $color;
+	}
+	// font-weight
+	@if $weight {
+		font-weight: $weight;
+    }
+    // line-height
+	@if $lh {
+		line-height: $lh;
+	}
+	// letter-spacing
+	@if $ls {
+		letter-spacing: $ls;
+	}
+}

@@ -1,0 +1,41 @@
+/*********************
+* Main
+**********************/
+
+main {
+    background: #1a1a1a;
+
+    .album_content {
+        @include flex(center, center);
+        flex-wrap: wrap;
+        padding: 50px 0;
+        .box_album {
+            @include flex($align:center, $flex-direction: column);
+            min-height: 410px;
+            padding: 25px;
+            background: #000;
+            margin: 20px 10px;
+            width: calc(100% / 4 - 20px);
+
+            ul {
+                @include list_style;
+                text-align: center;
+                img {
+                    display: block;
+                    width: 220px;
+                    margin-bottom: 20px;
+                }
+
+                h3 {
+                    color: #fff;
+                    margin-bottom: 10px;
+                }
+
+                h4 {
+                    color: #808071;
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+}

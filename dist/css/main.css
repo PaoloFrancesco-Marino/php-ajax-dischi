@@ -1,0 +1,79 @@
+/*********************
+* Variables
+**********************/
+/*****************
+* Commons
+******************/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+.general_container {
+  width: 1170px;
+  margin: 0 auto;
+}
+
+/**********
+* Mixin
+***********/
+/*********************
+* Header
+**********************/
+header {
+  background: #000;
+  padding: 10px 0;
+}
+header img {
+  width: 50px;
+}
+
+/*********************
+* Main
+**********************/
+main {
+  background: #1a1a1a;
+}
+main .album_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 50px 0;
+}
+main .album_content .box_album {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  min-height: 410px;
+  padding: 25px;
+  background: #000;
+  margin: 20px 10px;
+  width: calc(100% / 4 - 20px);
+}
+main .album_content .box_album ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  text-align: center;
+}
+main .album_content .box_album ul img {
+  display: block;
+  width: 220px;
+  margin-bottom: 20px;
+}
+main .album_content .box_album ul h3 {
+  color: #fff;
+  margin-bottom: 10px;
+}
+main .album_content .box_album ul h4 {
+  color: #808071;
+  margin-bottom: 10px;
+}
