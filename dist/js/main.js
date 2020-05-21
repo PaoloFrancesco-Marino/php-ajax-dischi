@@ -10992,24 +10992,56 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
 
   var source = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#album-template').html(); //refs template 
 
-  var template = Handlebars.compile(source);
+  var template = Handlebars.compile(source); // event js
+
   /***********
    * Event JS
    ***********/
-  // search
+  // // search
+  // inputSearch.keyup(function() {
+  //     var search = $(this).val().toLowerCase().trim();
+  //     console.log(search);
+  //     // select album search
+  //     $('.box_album').each(function(){
+  //         // select search author 
+  //         var authors = $(this).find('.search_author h4').text().toLowerCase();
+  //         // comparison research and authors
+  //         if (authors.includes(search)) {
+  //             $(this).show();
+  //         } else {
+  //             $(this).hide();
+  //         }
+  //     });    
+  // })
+  // search with api
 
   inputSearch.keyup(function () {
-    var search = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val().toLowerCase().trim();
-    console.log(search); // select album search
+    // reset
+    container.html('');
+    var search = inputSearch.val().trim();
+    jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+      url: 'http://localhost/E-Boolean-PHP/php-ajax-dischi/partials/db_script.php',
+      method: 'GET',
+      success: function success(res) {
+        for (var i = 0; i < res.length; i++) {
+          var album = res[i];
+          var context = {
+            poster: album.poster,
+            title: album.title,
+            author: album.author,
+            year: album.year
+          };
 
-    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.box_album').each(function () {
-      // select search author 
-      var authors = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('.search_author h4').text().toLowerCase(); // comparison research and authors
+          if (search.includes(context['author'])) {
+            // template
+            var html = template(context); // print html
 
-      if (authors.includes(search)) {
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).show();
-      } else {
-        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hide();
+            container.append(html);
+          }
+        }
+      },
+      error: function error() {
+        console.log('Errore');
       }
     });
   }); // chiamata ajax per popolare html
@@ -11036,7 +11068,7 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
       console.log('Errore');
     }
   });
-});
+}); // <-- end Doc Ready
 
 /***/ }),
 
