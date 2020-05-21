@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP - Dischi</title>
+    <title>PHP - Ajax - Dischi</title>
 
     <!-- Font -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"> 
@@ -23,7 +23,7 @@
             <nav class="navbar">
                 <div class="sx">
                     <img src="dist/img/spotify-logo.png" alt="logo spotify">
-                    <a href="index-ajax.php">Ajax-JS</a>
+                    <a href="index.php">Home</a>
                 </div>
                 <div class="dx">
                     <input type="text" placeholder="Iserisci una Ricerca">
@@ -37,27 +37,35 @@
     <main>  
         <div class="general_container">
             <div class="album_content">
-                <?php foreach($album as $data) { ?>     
-                    <div class="box_album">
-                        <ul>
-                            <li>
-                                <img src="<?php echo $data['poster']?>" alt="poster">
-                            </li>
-                            <li>
-                                <h3><?php echo $data['title']?></h3>
-                            </li>
-                            <li>
-                                <h4><?php echo $data['author']?></h4>
-                            </li>
-                            <li>
-                                <h4><?php echo $data['year']?></h4>
-                            </li> 
-                        </ul>
-                    </div>
-                <?php } ?>  
+
             </div>
         </div><!-- ./General Container  -->
     </main><!-- ./main -->
 
+
+    <!-- Handlebars Template -->
+    <script id="album-template" type="text/x-handlebars-template">
+        <div class="box_album">
+            <ul>
+                <li>
+                    <img src="{{ poster }}" alt="poster">
+                </li>
+                <li>
+                    <h3>{{ title }}</h3>
+                </li>
+                <li>
+                    <h4>{{ author }}</h4>
+                </li>
+                <li>
+                    <h4>{{ year }} </h4>
+                </li> 
+            </ul>
+        </div>
+    </script><!-- ./Handlebars Template -->
+
+
+    <!-- Main JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js"></script> <!-- Handlebars -->
+    <script src="dist/js/main.js"></script> <!-- JS -->
 </body>
 </html>

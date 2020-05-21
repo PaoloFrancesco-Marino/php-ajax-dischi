@@ -10983,7 +10983,72 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jquery__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(jquery__WEBPACK_IMPORTED_MODULE_0__);
 
 jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
-  console.log('js work');
+  //refs 
+  var container = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.album_content'); // album content
+
+  var inputSearch = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.navbar .dx input'); //input search
+
+  var btnClick = jquery__WEBPACK_IMPORTED_MODULE_0___default()('.navbar .dx button'); //btn click
+
+  var source = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#album-template').html(); //refs template 
+
+  var template = Handlebars.compile(source); // event js
+  //click 
+
+  btnClick.click(function () {
+    // reset
+    container.html('');
+    var search = inputSearch.val().trim();
+
+    if (search !== '') {
+      var album = {
+        url: 'http://localhost/E-Boolean-PHP/php-ajax-dischi/partials/db_script.php',
+        query: search
+      };
+    }
+
+    jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+      url: 'http://localhost/E-Boolean-PHP/php-ajax-dischi/partials/db_script.php',
+      method: 'GET',
+      success: function success(res) {
+        for (var i = 0; i < res.length; i++) {
+          var album = res[i];
+          var context = {
+            poster: album.poster,
+            title: album.title,
+            author: album.author,
+            year: album.year
+          }; // template
+
+          var html = template(context); // print html
+
+          container.append(html);
+        }
+      },
+      error: function error() {}
+    });
+  }); // chiamata ajax per popolare html
+
+  jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
+    url: 'http://localhost/E-Boolean-PHP/php-ajax-dischi/partials/db_script.php',
+    method: 'GET',
+    success: function success(res) {
+      for (var i = 0; i < res.length; i++) {
+        var album = res[i];
+        var context = {
+          poster: album.poster,
+          title: album.title,
+          author: album.author,
+          year: album.year
+        }; // template
+
+        var html = template(context); // print html
+
+        container.append(html);
+      }
+    },
+    error: function error() {}
+  });
 });
 
 /***/ }),
