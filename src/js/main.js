@@ -16,29 +16,12 @@ $(document).ready(function () {
     /***********
      * Event JS
      ***********/
-
-    // // search
-    // inputSearch.keyup(function() {
-    //     var search = $(this).val().toLowerCase().trim();
-    //     console.log(search);
-    //     // select album search
-    //     $('.box_album').each(function(){
-    //         // select search author 
-    //         var authors = $(this).find('.search_author h4').text().toLowerCase();
-    //         // comparison research and authors
-    //         if (authors.includes(search)) {
-    //             $(this).show();
-    //         } else {
-    //             $(this).hide();
-    //         }
-    //     });    
-    // })
-
+    
     // search with api
     inputSearch.keyup(function() {
         // reset
         container.html('');
-        var search = inputSearch.val().trim();
+        var search = inputSearch.val().toLowerCase().trim();
 
         $.ajax({
             url: 'http://localhost/E-Boolean-PHP/php-ajax-dischi/partials/db_script.php',
@@ -56,13 +39,14 @@ $(document).ready(function () {
                         year: album.year
                     }
 
-                    if (search.includes(context['author'])) {
+                    if (album.author.toLowerCase().includes(search)) {
                         // template
                         var html = template(context);
-                        // print html
+                        // print htmli
                         container.append(html);
                     }
-                }   
+                    
+                }  
             },
             error: function() {
                 console.log('Errore');
@@ -102,6 +86,4 @@ $(document).ready(function () {
         }
     })
     
-    
-
 }); // <-- end Doc Ready
