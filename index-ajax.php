@@ -27,7 +27,6 @@
                 </div>
                 <div class="dx">
                     <input type="text" placeholder="Iserisci una Ricerca">
-                    <button>Invia</button>
                 </div>
             </nav>
         </div><!-- ./General Container  -->
@@ -53,7 +52,7 @@
                 <li>
                     <h3>{{ title }}</h3>
                 </li>
-                <li>
+                <li class="search_author">
                     <h4>{{ author }}</h4>
                 </li>
                 <li>

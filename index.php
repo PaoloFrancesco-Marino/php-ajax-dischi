@@ -27,7 +27,6 @@
                 </div>
                 <div class="dx">
                     <input type="text" placeholder="Iserisci una Ricerca">
-                    <button>Invia</button>
                 </div>
             </nav>
         </div><!-- ./General Container  -->

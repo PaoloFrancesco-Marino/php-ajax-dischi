@@ -10992,40 +10992,25 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
 
   var source = jquery__WEBPACK_IMPORTED_MODULE_0___default()('#album-template').html(); //refs template 
 
-  var template = Handlebars.compile(source); // event js
-  //click 
+  var template = Handlebars.compile(source);
+  /***********
+   * Event JS
+   ***********/
+  // search
 
-  btnClick.click(function () {
-    // reset
-    container.html('');
-    var search = inputSearch.val().trim();
+  inputSearch.keyup(function () {
+    var search = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).val().toLowerCase().trim();
+    console.log(search); // select album search
 
-    if (search !== '') {
-      var album = {
-        url: 'http://localhost/E-Boolean-PHP/php-ajax-dischi/partials/db_script.php',
-        query: search
-      };
-    }
+    jquery__WEBPACK_IMPORTED_MODULE_0___default()('.box_album').each(function () {
+      // select search author 
+      var authors = jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).find('.search_author h4').text().toLowerCase(); // comparison research and authors
 
-    jquery__WEBPACK_IMPORTED_MODULE_0___default.a.ajax({
-      url: 'http://localhost/E-Boolean-PHP/php-ajax-dischi/partials/db_script.php',
-      method: 'GET',
-      success: function success(res) {
-        for (var i = 0; i < res.length; i++) {
-          var album = res[i];
-          var context = {
-            poster: album.poster,
-            title: album.title,
-            author: album.author,
-            year: album.year
-          }; // template
-
-          var html = template(context); // print html
-
-          container.append(html);
-        }
-      },
-      error: function error() {}
+      if (authors.includes(search)) {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).show();
+      } else {
+        jquery__WEBPACK_IMPORTED_MODULE_0___default()(this).hide();
+      }
     });
   }); // chiamata ajax per popolare html
 
@@ -11047,7 +11032,9 @@ jquery__WEBPACK_IMPORTED_MODULE_0___default()(document).ready(function () {
         container.append(html);
       }
     },
-    error: function error() {}
+    error: function error() {
+      console.log('Errore');
+    }
   });
 });
 

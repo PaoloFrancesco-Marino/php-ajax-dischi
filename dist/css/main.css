@@ -54,15 +54,12 @@ header .navbar .dx input {
   border-radius: 8px;
   margin-right: 10px;
 }
-header .navbar .dx button {
-  padding: 5px 10px;
-  border-radius: 8px;
-}
 
 /*********************
 * Main
 **********************/
 main {
+  min-height: 100vh;
   background: #1a1a1a;
 }
 main .album_content {
