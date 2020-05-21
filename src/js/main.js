@@ -16,7 +16,7 @@ $(document).ready(function () {
     /***********
      * Event JS
      ***********/
-    
+
     // search with api
     inputSearch.keyup(function() {
         // reset
@@ -45,7 +45,6 @@ $(document).ready(function () {
                         // print htmli
                         container.append(html);
                     }
-                    
                 }  
             },
             error: function() {
